@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 
+    <!DOCTYPE html>
+<html>
+
     <head>
         <meta charset="utf-8">
         <title>Introducción a VueJS</title>
         <meta name="author" content="">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
     <body>
@@ -28,30 +32,43 @@
                    - La definición <dd> será la propiedad "value"
             -->
             <div class="jumbotron">
-                <h1 class="display-4" id="title">{{ title }}</h1>
-              </div>
-              <div class="container row mx-auto">
-                <div v-for="movie in col.collection.items" class="col-md-4 mb-3 card">
-                    <div class="container mt-4 mb-3">
-                        <div v-for="item in movie.data">
-                            <p class="font-weight-bold m-0"> {{item.prompt}}</p>
-                            <p>{{item.value}}</p>
-                        </div>
-    
-                        <a :href="movie.href" class="btn btn-primary w-25" target="_blank">Ver</a>
-                    </div>
-                </div>
-            </div>
             
-        </div>
-    </div>
-  
-        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-        <script src="js/script.js"></script>
-    </body>
+                <h1 class="display-4" id="title">{{ title }}</h1>
+            
+            </div>
 
-</html>
+            <div class="container">
+
+                <div class="row" style="margin-left: 1rem;">
+
+                    <div class="col-md-4 mb-3 card" v-for="item in col.collection.items" :key="item.id">
+
+                        <div class="container mt-4 mb-3">
+
+                                <dl v-for="data in item.data">
+
+                                    <dt>{{ data.prompt }}</dt>
+                                    <dd>{{ data.value }}</dd>
+
+                                </dl>
+
+                                <a :href=item.href class="btn btn-primary">Saber más...</a>
+                        
+                            </div>
+                      
+                        </div>
+                  
+                    </div>
+                
+                </div>
+         
+            </div>
+        
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+            <script src="./js/script.js"></script>
 
     </body>
 
